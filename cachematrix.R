@@ -10,10 +10,8 @@ makeCacheMatrix <- function(x = matrix()) {           ## creates a function name
             m <<- NULL				            ## creates a variable "m" in the parent environment with a NULL value
       }
       get <- function() x				      ## creates a function named get which looks for the variable "x"
-      setinverse <- function(inverse) m <<- inverse	## creates a function named setinverse takes the calculated value and puts it into a variable
-      ## "m" which lives in the parent environment 
-      getinverse <- function() m			      ## creates a function which retrieves the value residing in the variable "m" in the parent
-      ## environment
+      setinverse <- function(inverse) m <<- inverse	## creates a function named setinverse takes the calculated value and puts it into a variable "m" which lives in the parent environment 
+      getinverse <- function() m			      ## creates a function which retrieves the value residing in the variable "m" in the parent environment
       list(set = set, get =inverse,			      ## creates a list of the four functions created within this function giving each of them the
            getinverse = getinverse)			      ## same name within the list as the name of the function
 }
@@ -22,8 +20,7 @@ makeCacheMatrix <- function(x = matrix()) {           ## creates a function name
 ## Write a short comment describing this function
 
 
-cacheSolve <- function(x, ...) {      		      ## creates a function which will either retrieve the solved value or calculate and return the
-      ## value
+cacheSolve <- function(x, ...) {      		      ## creates a function which will either retrieve the solved value or calculate and return the value
       m <- x$getinverse()				      ## retrieves the value of variable "m" which was created in the makeCacheMatrix function
       if(!is.null(m)) {				            ## tests to see if the value of "m" is not "NULL".  If not "NULL" stays in the if statment code
             message("getting cached data")		## Since a value exists a statement is printed "getting cached data"
